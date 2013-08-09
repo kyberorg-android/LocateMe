@@ -2,8 +2,8 @@
 <project basedir="." default="jardoc">
 <property file="app.properties"/>
 <property file="local.properties"/>
-<target name="doc" depends="public_doc,dev_doc"
-		/>
+<property file="project.properties"/>
+
 <target name="public_doc" description="LocateMe Public Javadoc">
     <javadoc
 		destdir="docs/api" 
@@ -12,7 +12,7 @@
         use="true"
 		splitindex="true"
 		version="true"		
-        classpath="${sdk.dir}\platforms\android-${sdk.platform}\android.jar"
+        classpath="${sdk.dir}\platforms\${target}\android.jar"
         sourcepath="src"
         linkoffline="http://d.android.com/reference ${sdk.dir}\docs\reference"
         >
@@ -27,13 +27,14 @@
         use="true"
 		splitindex="true"
 		version="true"		
-        classpath="${sdk.dir}\platforms\android-${sdk.platform}\android.jar"
+        classpath="${sdk.dir}\platforms\${target}\android.jar"
         sourcepath="src"
         linkoffline="http://d.android.com/reference ${sdk.dir}\docs\reference"
         >
     </javadoc>
 </target>
+<target name="doc" depends="public_doc, dev_doc" />
 <target name="jardoc" depends="doc">
-    <jar destfile="docs\${app.name}-${app.version}-javadoc.jar" basedir="docs/api" />
+    <jar destfile="docs\${app.name}-${app.version}-javadoc.jar" basedir="docs" />
 </target>
 </project>
