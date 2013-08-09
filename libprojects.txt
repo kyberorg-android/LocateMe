@@ -1,1 +1,7 @@
 Here will be description of library projects our application depends on
+
+1. Android Commons Library by Virtalab (https://github.com/virtalab/android-commons)
+2. GeoLib by Virtalab (https://github.com/virtalab/geolib)
+3. Google Play Services (Can be obtained as part of Extras in Android SDK)
+4. Google Support Library v4 (Can be found in Android SDK)
+5. View Pager Indicator by JakeWharton (https://github.com/JakeWharton/Android-ViewPagerIndicator)
