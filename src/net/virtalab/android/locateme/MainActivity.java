@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentActivity;
  */
 public class MainActivity extends FragmentActivity {
     private static final String TAG = App.TAG+":MainActivity";
-    private static String[] TAB_LABELS;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
