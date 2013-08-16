@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.bugsense.trace.BugSenseHandler;
 import com.viewpagerindicator.TabPageIndicator;
 import net.virtalab.android.locateme.fragments.CustomLocationFragment;
 import net.virtalab.android.locateme.fragments.MainFragment;
@@ -42,6 +43,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BugSenseHandler.initAndStartSession(this,S.BUGSENSE_API_KEY);
         setContentView(R.layout.main);
         //do tab init
         //initTabs();
@@ -123,6 +125,11 @@ public class MainActivity extends FragmentActivity {
             case MenuActions.SETTINGS_ITEM:
                 startActivity(new Intent(this,SettingsActivity.class));
                 break;
+            //TODO just for test - remove after test
+            case MenuActions.PANIC_ITEM:
+                int inf = 1/0;
+                System.out.println(inf+"");
+                break;
             default:
                 return false;
         }
@@ -178,9 +185,13 @@ public class MainActivity extends FragmentActivity {
     static class MenuActions{
         private static final int DEFAULT_MENU_GROUP = 0;
         private static final int SETTINGS_ITEM = Menu.FIRST;
+        //TODO just for test - remove after test
+        private static final int PANIC_ITEM = Menu.FIRST+1;
 
         static void createMenu(Menu menu){
             menu.add(DEFAULT_MENU_GROUP,SETTINGS_ITEM,Menu.NONE,R.string.main_menu_settings);
+            //TODO just for test - remove after test
+            menu.add(DEFAULT_MENU_GROUP,PANIC_ITEM,Menu.NONE,"Do panic");
         }
     }
 
